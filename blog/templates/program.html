@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://css.gg/instagram.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %} ">
+    <link rel="shortcut icon" type="gif" href="{% static 'img/favico.ico'%}">
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title> {{program.programTitle}} </title>
+</head>
+<style>
+
+</style>
+<body>
+    <header>
+
+        <div class="xxx" >
+          <ul>
+            <img src="{% static 'img/clx.png'%}" onclick="location.href='home';"  alt="" style="margin-bottom: 5px; margin-top: 6px; width: 500px;">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+            {% if request.user.is_authenticated %}
+            <div><a href="logout" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-left"></i> Çıkış Yap</a></div>
+            {% endif %}
+            {% if not request.user.is_authenticated %}
+            <div><a href="login" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-right"></i> Giriş Yap</a></div>
+            {% endif %}
+          </ul>
+          <ul style="height: 70px; margin-top: 10px;">
+
+            <li class="anasayfa"><a class="" href="../home">Anasayfa</a></li>
+            <li class="programlar"><a  class="active"  href="../programlar">Programlar</a></li>
+
+            <li class="contact"><a href="../iletisim">İletişim</a></li>
+            <li class="koclukal"><a href="../koclukal">Koçluk Al</a></li>
+            <li class="urunler"><a href="../urunler" style="color: #00ca72;">Ürünlerimiz <i class="fa-brands fa-shopify"></i></a></li>
+
+          </ul>
+
+
+
+        </div>
+      </header>
+        <div class="mx-auto mt-3" style="width: 70%;">
+            <h1 class="text-center">{{ program.programTitle }}</h1>
+            <div class="mt-3 mx-auto text-center">
+            {% autoescape off %}
+            {{ program.programAbstract|safe }}
+            {% endautoescape %}</div>
+            <center><div class="mt-3 mx-auto"> <img class="w-50 pb-5" src="../{{program.programFullImage}}"></div></center>
+
+
+        </div>
+
+        {% include 'partials/_footer.html' %}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/5af3974b3f.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

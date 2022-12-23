@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://css.gg/instagram.css' rel='stylesheet'>
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" type="gif" href="{% static 'img/favico.ico'%}">
+
+    <link rel="stylesheet" href="{% static 'css/footer.css'%}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <title>Koçluk Al</title>
+</head>
+<body>
+    <header class="pb-3">
+
+        <div class="xxx" >
+          <ul>
+            <img src="{% static 'img/clx.png'%}" onclick="location.href='home';"  alt="" style="margin-bottom: 5px; margin-top: 6px; width: 500px;">
+            {% if request.user.is_authenticated %}
+            <div><a href="logout" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-left"></i> Çıkış Yap</a></div>
+            {% endif %}
+            {% if not request.user.is_authenticated %}
+            <div><a href="login" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-right"></i> Giriş Yap</a></div>
+            {% endif %}
+          </ul>
+          <ul style="height: 70px; margin-top: 10px;">
+
+            <li class="anasayfa"><a class="" href="../home">Anasayfa</a></li>
+            <li class="programlar"><a    href="../programlar">Programlar</a></li>
+
+
+            <li class="contact"><a href="../iletisim">İletişim</a></li>
+            <li class="koclukal"><a  class="active" href="../koclukal">Koçluk Al</a></li>
+            <li class="urunler"><a href="../urunler" style="color: #00ca72;">Ürünlerimiz <i class="fa-brands fa-shopify"></i></a></li>
+
+          </ul>
+
+
+
+        </div>
+      </header>
+      <div>
+
+        <center><a href="https://www.instagram.com/cagestrength"><img   class="ml-5" src="{% static 'img/kh.png'%}" alt="" style=" max-width: 50%;
+        margin-left: 4.9%;
+        margin-right: 4%;
+
+      "></a></center>
+
+      </div>
+
+
+        <center>
+        <div id="container">
+        	<div class="product-details">
+            	<h1>Burak Çöğgün</h1>
+            		<p class="information">
+            		    "Küçük yaşlarımdan itibaren çeşitli sporlarla uğraştıktan sonra, üniversiteye başlamamla beraber fitness ve akabinde powerlifting sporuyla tanıştım, oluşturduğumuz klüpte birçok sporcuya koçluk yaparak devam ettim. Üniversiteden sonra profesyonel kariyerime antrenör olarak devam etme kararı aldıktan sonra TVGVF onaylı Antrenörlük belgemi aldım. Kariyerime sahada aktif antrenör olarak devam etmekteyim. Yaptığım çalışmalarla ve aldığım sertifikalarla kendimi powerlifting programlaması üzerine eğittim ve bu doğrultuda birçok powerlifting sporcusunun koçluğunu yapmaktayım."
+            		    </p>
+            </div>
+        <div class="product-image">
+        	<img src="https://www.cagestrength.com/blog/static/img/bcx.png" alt="Burak Çöğgün">
+            </div>
+            </div>
+        <div id="container">
+        	<div class="product-details">
+            	<h1>Ayhan Ünal</h1>
+            		<p class="information">
+            		    "7 yaşımdan beri sporun içerisinden geliyorum. Futbol, sprint, amerikan futbolu, güreş ve son olarak powerlifting ile yoluma devam ettim. Uzun yıllar bir çok atlete kuvvet antrenmanı yaptırdım. Yarışma kararı aldıktan sonra Türkiyede 2 kez 83kg da yarıştım. İkisinde de 1. geldim. Son olarak 2020 IPF Türkiye Powerlifting yarışmasında overallda 3. geldim. Ardından geçirdiğim apendist ameliyatı ve bir kaç sakatlıktan sonra spora uzun bir ara verdim. Amacım cage oluşumunda güzel sporcular yetiştirmek ve bu sefer dünya şampiyonasında boy göstermek."
+            		    </p>
+            </div>
+        <div class="product-image">
+        	<img src="https://www.cagestrength.com/blog/static/img/auu.png" alt="Burak Çöğgün">
+            </div>
+            </div>
+        </center>
+
+
+      {% include 'partials/_footer.html' %}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/5af3974b3f.js" crossorigin="anonymous"></script>
+
+    </script>
+</body>
+</html>
