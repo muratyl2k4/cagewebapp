@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/navbar.css'%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{% static 'css/footer.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link href='https://css.gg/instagram.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" type="gif" href="{% static 'img/favico.ico'%}">
+
+    <title>Ürünler</title>
+
+</head>
+<body>
+    <header>
+
+        <div class="xxx" style="width: 100%; position: absolute; top: 0;">
+          <ul>
+        <img src="{% static 'img/clx.png'%}" onclick="location.href='home';"  alt="" style="margin-bottom: 5px; margin-top: 6px; width: 500px;">
+            {% if request.user.is_authenticated %}
+            <div><a href="logout" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-left"></i> Çıkış Yap</a></div>
+            {% endif %}
+            {% if not request.user.is_authenticated %}
+            <div><a href="login" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-right"></i> Giriş Yap</a></div>
+            {% endif %}
+          </ul>
+          <ul style="height: 70px; margin-top: 10px;">
+
+            <li class="anasayfa"><a  href="home">Anasayfa</a></li>
+            <li class="programlar"><a  href="programlar">Programlar</a></li>
+
+
+            <li class="contact"><a href="iletisim">İletişim</a></li>
+            <li class="koclukal"><a href="koclukal">Koçluk Al</a></li>
+            <li class="urunler"><a class="active" href="urunler" style="color: #00ca72;">Ürünlerimiz <i class="fa-brands fa-shopify"></i></a></li>
+
+          </ul>
+
+
+
+        </div>
+      </header>
+
+      <div style="height: 400px; align-items: center; background-color: black; padding-top: 200px;"><h1 class="text-center fs-1 fw-bold text-white ">ÇOK YAKINDA...</h1></div>
+
+      {% include 'partials/_footer.html' %}
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/5af3974b3f.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

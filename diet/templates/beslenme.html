@@ -1,0 +1,305 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="shortcut icon" type="gif" href="{% static 'img/favico.ico'%}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+
+    <title>Beslenme</title>
+</head>
+<style>
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.inputdark {
+padding: 6px 12px;
+background: rgb(31, 32, 35);
+border: 1px solid rgb(60, 63, 68);
+border-radius: 4px;
+font-size: 13px;
+color: rgb(247, 248, 248);
+height: 46px;
+appearance: none;
+transition: border 0.15s ease 0s;
+
+}
+h1{
+    font-weight: 600;
+}
+hr{
+    width:50px;
+    border: none;
+    border-bottom: 1px solid rgba(119, 119, 119, 0.25)
+}
+
+.containerr{
+
+    margin: 1rem auto;
+    padding: 2rem;
+    text-align: justify;
+    transition: all 0.3s;
+}
+.containerr p{
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    word-spacing: 2px;
+}
+
+.containerr p:first-child::first-letter{
+    color:#000000;
+    font-weight: bold;
+    font-size: 70px;
+    float: left;
+    line-height: 60px;
+    padding-right: 8px;
+    margin-top: -3px;
+}
+
+@media screen and (max-width:600px){
+    .containerr{
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+
+
+/* CSS */
+.button-54 {
+  background-color: red;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+
+
+
+
+
+</style>
+<body>
+  <header>
+
+    <div class="xxx" >
+      <ul>
+        <img src="{% static 'img/clx.png'%}" onclick="location.href='home';"  alt="" style="margin-bottom: 5px; margin-top: 6px; width: 500px;">
+        {% if request.user.is_authenticated %}
+        <div><a href="logout" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-left"></i> Çıkış Yap</a></div>
+        {% endif %}
+        {% if not request.user.is_authenticated %}
+        <div><a href="login" class="position-absolute end-0 me-3 mb-3"><i class="bi bi-box-arrow-in-right"></i> Giriş Yap</a></div>
+        {% endif %}
+      </ul>
+      <ul style="height: 70px; margin-top: 10px;">
+
+        <li class="anasayfa"><a class="" href="home">Anasayfa</a></li>
+        <li class="programlar"><a  href="programlar">Programlar</a></li>
+
+
+        <li class="contact"><a href="iletisim">İletişim</a></li>
+        <li class="koclukal"><a href="koclukal">Koçluk Al</a></li>
+        <li class="urunler"><a href="urunler" style="color: #00ca72;">Ürünlerimiz <i class="fa-brands fa-shopify"></i></a></li>
+
+      </ul>
+
+
+
+    </div>
+  </header>
+
+
+    <div class="paragraph mx-auto pt-3" style="width: 50%;">
+      <h1 class="mx-auto text-center">LÜTFEN DEĞERLERİNİZİ GİRİNİZ</h1>
+      </div>
+    <hr class="mx-auto border border-dark border-1 opacity-75" style="width: 50%;">
+  </div>
+    <hr>
+
+
+
+
+      {% for abc in a%}
+      <br><br>
+      {% for x in stats %}
+      <h1 class="text-center fw-bold" id="diet">Kilo Koruma BMR = {{ x.dbmr }}</h1>
+      <h1 class="text-center fw-bold" id="diet">Kilo {% if abc.userchoice == "KG+"%} Alma {% endif %}
+        {% if abc.userchoice == "KG-"%} Verme {% endif %} BMR = {{ x.bmr }}</h1>
+      {% endfor %}
+
+      <form action="" method="POST" class="mx-auto" style="width: 100%;" >{% csrf_token %}
+        <div class="row row-cols-1 row-cols-md-2 g-5 mx-auto" style="min-width: 70%; max-width: 70%;">
+          <div class="col pl-5">
+            <div class="card shadow-lg h-100 rounded-0 mx-auto" style="background-color: #ffffff; width: 250px;">
+              <div class="card-body">
+                <h5 class="card-title" >Cinsiyetinizi Girin <img style="width: 35px; height: 35px;" src=" {% static 'img/gender.png' %} " alt=""> </h5>
+                <p class="card-text " ></p>
+                <input type="radio" class="btn-check mx-auto" name="gender"  id="gender1" autocomplete="off" value="Erkek" {% if abc.usergender == "Erkek"%} checked {% endif%}>
+                <label class="btn btn-dark mt-3 rounded-0 text-white" style="width: 100%; " for="gender1" >Erkek</label>
+                <input type="radio" class="btn-check mx-auto " name="gender"  id="gender2" autocomplete="off" value="Kadın" {% if abc.usergender == "Kadın"%} checked {% endif%}>
+                <label class="btn btn-dark mt-3 rounded-0" style="width: 100%; " for="gender2">Kadın</label>
+
+              </div>
+            </div>
+          </div>
+          <div class="col" style="padding-right: 20px; ">
+            <div class="card shadow-lg h-100 rounded-0" style=" background-color: #ffffff; width: 250px; margin-left: auto; margin-right: auto;">
+              <div class="card-body">
+                <h4 class="card-title " >Kilonuzu Girin <img src="{% static 'img/weight.png'%}" style="width: 40px; height: 40px; margin-left: 10px;" alt=""> </h4>
+                <p class="card-text " >Önerilen ölçüm aç karına olandır !</p>
+                <input type="number" class="inputdark rounded-0" name="kginput" min="30" max="200" aria-describedby="addon-wrapping" min="40" max="200" value="{{ abc.userweight }}" style="width: 100%;" required>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="padding-right: 20px; margin-left: auto; margin-right: auto;">
+            <div class="card shadow-lg h-100 rounded-0 mx-auto" style="width: 18rem; background-color: #ffffff; width: 250px;">
+              <div class="card-body">
+                <h5 class="card-title"  >Boyunuzu Girin <img src="{% static 'img/rulerr.png'%} " style="margin-left: 15px;" alt=""></h5>
+
+                <input type="number" class="inputdark align-bottom rounded-0"  name="lengthinput" min="100" max="250" aria-describedby="addon-wrapping" style="width: 100%;" value="{{ abc.userlength }}" required>          </div>
+              </div>
+            </div>
+
+          <div class="col" style="padding-right: 20px;">
+            <div class="card shadow-lg h-100 rounded-0 mx-auto" style="width: 18rem; background-color: #ffffff; width: 250px;">
+              <div class="card-body">
+                <h5 class="card-title"  >Yaşınızı Girin    <img src="{% static 'img/age1.png'%}" style="margin-left: 40px;" alt=""> </h5>
+                <p class="card-text " ></p>
+                <input type="number" class="inputdark rounded-0"  name="ageinput" min="10" max="100" aria-describedby="addon-wrapping" style="width: 100%;" value="{{ abc.userage }}" required>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="padding-right: 20px;">
+            <div class="card shadow-lg h-100 rounded-0 mx-auto" style="width: 18rem; background-color: #ffffff; width: 250px;">
+              <div class="card-body">
+                <h5 class="card-title">Kaç Öğün Yemek İstersiniz </h5>
+                <p class="card-text " >Tüm öğünlerinizde yiyeceğiniz yemekleri kendiniz seçeceksiniz.</p>
+                <input type="number" class="inputdark rounded-0"  min="1" max="8" name="repastinput" aria-describedby="addon-wrapping" style="width: 100%" value="{{ abc.userrepastlength }}" required>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="padding-right: 20px;">
+            <div class="card shadow-lg h-100 rounded-0 mx-auto" style="width: 18rem; background-color: #ffffff; width: 250px;">
+              <div class="card-body">
+                <h5 class="card-title" >Kaç Kilo Almak / Vermek İstersiniz ?  </h5>
+                <p class="card-text " >Programlarımız aylık olduğundan dolayı önerilen 1 ya da 2 kilo almak/vermektir</p>
+                <input type="number" class="inputdark rounded-0" name="weight+-"aria-describedby="addon-wrapping" min="1" max="5" style="width: 100%;" value="{{abc.userweightrange}}" required>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="padding-right: 20px;">
+            <div class="card shadow-lg h-100 rounded-0 mx-auto" style=" background-color: #ffffff; width: 250px;">
+              <div class="card-body">
+                <h5 class="card-title" >Lütfen Kilo Hedefinizi Seçin </h5>
+                <p class="card-text " ></p>
+                <input type="radio" class="btn-check" name="+-choice" id="av2" autocomplete="off" value="KG-" {% if abc.userchoice == "KG-"%} checked {% endif%}>
+                <label class="btn btn-dark w-100 mt-3 rounded-0" for="av2">Kilo Verme</label>
+                <input type="radio" class="btn-check" name="+-choice" id="av1" autocomplete="off" value="KG+" {% if abc.userchoice == "KG+"%} checked {% endif%}>
+                <label class="btn btn-dark w-100 mt-3 rounded-0" for="av1">Kilo Alma </label>
+
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-lg h-100 rounded-0 mx-auto" style=" background-color: #ffffff; width: 250px; margin-left: auto; margin-right: auto;">
+              <div class="card-body">
+                <h5 class="card-title" >Lütfen Hareket Düzeyinizi Girin </h5>
+                <p class="card-text " ></p>
+                <input type="radio" class="btn-check " name="moving" id="option1" autocomplete="off" value="az" {% if abc.usermoving == "az"%} checked {% endif%}>
+                <label class="btn btn-dark mt-1 rounded-0" style="width: 48%;" for="option1">Az Hareketli </label>
+                <input type="radio" class="btn-check " name="moving" id="option2" autocomplete="off" value="orta" {% if abc.usermoving == "orta"%} checked {% endif%}>
+                <label class="btn btn-dark mt-1 rounded-0" style="width: 48%;" for="option2">Orta Hareketli</label>
+                <input type="radio" class="btn-check " name="moving" id="option3" autocomplete="off" value="cok" {% if abc.usermoving == "cok"%} checked {% endif%}>
+                <label class="btn btn-dark mt-1 rounded-0" style="width: 48%;" for="option3">Çok Hareketli</label>
+                <input type="radio" class="btn-check " name="moving" id="option4" autocomplete="off" value="asiri" {% if abc.usermoving == "asiri"%} checked {% endif%}>
+                <label class="btn btn-dark mt-1 rounded-0" style="width: 48%;" for="option4">Aşırı Hareketli</label>
+
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+                <center><button  type="submit" class="button-54 mt-4"><p style="height: 10px;" class="text-white text-center">Programımı oluştur -></p> </button></center>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+    </form>
+
+      {% endfor %}
+
+      <hr class="border border-dark border-1 opacity-75 mx-auto" style="width: 70%;">
+      <br><br>
+
+
+      <br><br>
+
+    {% include 'partials/_footer.html' %}
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5af3974b3f.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

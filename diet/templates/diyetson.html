@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Beslenme Programı</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="{% static 'css/navbar.css'%}">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Antonio' rel='stylesheet'>
+  <link href='https://css.gg/instagram.css' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <link rel="shortcut icon" type="gif" href="{% static 'img/favico.ico'%}">
+  <link rel="stylesheet" href="{% static 'css/mermer.css'%}">
+
+</head>
+<style>
+  body {
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+  }
+</style>
+
+<body>
+  <header class='w-100'>
+
+    <div class="xxx" style="width: 100%; position: absolute; top: 0;">
+      <ul>
+        <img src="{% static 'img/clx.png'%}" onclick="location.href='home';"  alt="" style="margin-bottom: 5px; margin-top: 6px; width: 500px;">
+        {% if request.user.is_authenticated %}
+        <div><a href="logout" class="" style="position: absolute; right: 0; margin-right: 10px; margin-bottom: 5px;"><i class="bi bi-box-arrow-in-left"></i> Çıkış Yap</a></div>
+        {% endif %}
+        {% if not request.user.is_authenticated %}
+        <div><a href="login" style="position: absolute; right: 0; margin-right: 10px; margin-bottom: 5px;"><i class="bi bi-box-arrow-in-right"></i> Giriş Yap</a></div>
+        {% endif %}
+      </ul>
+      <ul style="height: 70px; margin-top: 10px;">
+
+        <li class="anasayfa"><a  href="home">Anasayfa</a></li>
+        <li class="programlar"><a  href="programlar">Programlar</a></li>
+
+
+        <li class="contact"><a href="iletisim">İletişim</a></li>
+        <li class="koclukal"><a href="koclukal">Koçluk Al</a></li>
+        <li class="urunler"><a href="urunler" style="color: #00ca72;">Ürünlerimiz <i class="fa-brands fa-shopify"></i></a></li>
+
+      </ul>
+
+
+
+    </div>
+  </header>
+  <center><div class="text" style="justify-content: space-between; align-items: center; padding: 10 10 10 10; width: 60%; height: fit-content; margin-top: 200px; font-size: 20px;">
+    <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">BESLENME PROGRAMI</h1>
+  <p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    Oluşturduğumuz bu beslenme programı, girmiş olduğunuz fiziksel özelliklerinizi kullanarak günlük almanız gereken makro değerlere (protein, karbonhidrat, yağ) göre sadece temel gıdaları kullanarak referans bir program oluşturur ve sadece makro yönlendirmesi yapabilir. Programı ihtiyacınız doğrultusunda değiştirebilir veya benzer besinlerle modifiye edebilirsiniz. Ayrıntılı ve size özel bir beslenme programı için <a href='../koclukal'>profesyonel yardım</a> almak daha doğru olacaktır.
+  </p>
+</div>
+</center>
+  <center>
+  <table class= "big" >
+    <caption>CAGE STRENGTH BESLENME PROGRAMI </caption>
+      <thead>
+            <th>{{ request.user|upper }}</th>
+            <th>Öğünler</th>
+            <th style="padding:7px">SPOR ÖNCESİ</th>
+     </thead>
+     <tbody>
+         <tr>
+          {% for abc in a%}
+             <td id= "kalori">
+                {{abc.bmr|slugify|add:" KALORİ"|center:"50"}}
+
+             </td>
+            {% endfor%}
+            <td>
+              {% for abc in b%}
+                <table class="mermer">
+
+                    <tr class="cbt">
+                      <th class="cbt">{{abc.num}}. öğün</th>
+                    </tr>
+                    <!-- eklenecek besin sayısı değişken olabilir
+                    diye buraya da aynı şekilde for loopunu
+                    koyabilirsin
+                    alttaki tr'nin etrafını django loopunla sarman gerekir
+                    ondan sonra armutla elmayı da silebilirsin
+                    umarım besin sayını tutan bir değişkenin vardır O_o-->
+                    <tr class="cbt2">
+                      <td class="cbt2">{{abc.p}}</td>
+                    </tr>
+                    <tr class="cbt2">
+                      <td class="cbt2">{{abc.k}}</td>
+                    </tr>
+
+
+                  </table>
+                  {% endfor %}
+
+
+                </td>
+                <td>
+                 <table>
+                    {%for pw in p %}
+                    <tr>
+                      <td class="sporCell">{{pw}}</td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                </td>
+      </tr>
+    </tbody>
+    <tfoot>
+
+  <tr> <td style="text-align: center" colspan="3">Ekstra Yağ : {{y}} Gram</td></tr>
+
+</tfoot>
+  </table>
+</center>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/5af3974b3f.js" crossorigin="anonymous"></script>
+</body>
+</html>

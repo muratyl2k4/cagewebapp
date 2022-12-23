@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="{% static 'css/checkbox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="shortcut icon" type="gif" href="{% static 'img/favico.ico'%}">
+
+    <title>Öğün Seçim</title>
+</head>
+<body>
+  <h1 class="yazi" style="
+  margin-left: 30%;
+  margin-top: 50px;
+  width: 40%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  position: absolute;
+  top: 0;
+
+  color: white;" >
+  ANTRENMAN ÖNCESİ BESİNLERİ SEÇİN </h1>
+  <a href="beslenme" style=" background-color: gray; width: 20px; height: 25px; text-align: center; position: absolute; top: 0;" class="previous">&#8249;--</a>
+
+  <form action=""  method="POST" style="margin-left: auto; margin-right: auto;">{% csrf_token %}
+        <div class="boxes">
+        <input type="checkbox" id="box-1" name="muz">
+        <label for="box-1">Muz</label>
+
+        <input type="checkbox" id="box-2" name="hurma">
+        <label for="box-2">Hurma</label>
+        {% for abc in a %}
+        <input type="checkbox" id="box-3" name="kahve">
+        <label for="box-3">Kahve (Max {{ abc.userweight|add:abc.userweight|add:abc.userweight|add:abc.userweight}} mg öneriyoruz) </label>
+        {% endfor%}
+        <input type="checkbox" id="box-4" name="bcaa">
+        <label for="box-4">BCAA</label>
+
+        <input type="checkbox" id="box-5" name="preworkout">
+        <label for="box-5">Pre-Workout</label>
+
+        <input type="checkbox" id="box-6" name="churcill">
+        <label for="box-6">Churcill</label>
+      </div>
+      <button  type="submit" style="background-color: red; color: white; width: 50%; height: 50px; text-align: center; margin-left: 25%; margin-top: 5px;" class="next">İLERİ</button>
+
+
+       </form>
+
+</body>
+</html>

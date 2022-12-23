@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/radio.css' %}">
+
+    <link rel="shortcut icon" type="gif" href="{% static 'img/favico.ico'%}">
+
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+
+    <title>Öğün Seçim</title>
+</head>
+
+
+
+<body>
+  <form method="POST">{% csrf_token %}
+    <a href="pre-workout-sec" style=" background-color: gray; width: 50px; height: 35px; text-align: center;" class="previous">&#8249;--</a>
+
+    <h2 class="fw-bold text-white fs-1">
+
+      I. ÖĞÜNÜNÜZÜ SEÇİN</h2>
+    <div class="container">
+
+
+      {% for user in a %}
+      <ul class="protein">
+      <li>
+        <input type="radio" id="f-option" name="protein" value="Tavuk Göğsü" required>
+        <label for="f-option"><p class="text-white" style="margin: 0 0 0 0;">Tavuk Göğsü</p></label>
+
+        <div class="check"></div>
+      </li>
+      {% endfor %}
+      <li>
+        <input type="radio" id="s-option" name="protein" value="Hindi" required>
+        <label for="s-option"><p class="text-white" style="margin: 0 0 0 0;">Hindi</p></label>
+
+        <div class="check"><div class="inside"></div></div>
+      </li>
+
+      <li>
+        <input type="radio" id="t-option" name="protein" value="Balık" required>
+        <label for="t-option"><p class="text-white" style="margin: 0 0 0 0;">Balık</p></label>
+
+        <div class="check"><div class="inside"></div></div>
+      </li>
+
+    </div>
+  </ul>
+  <div class="container">
+  <ul class="karbonhidrat">
+  <li>
+    <input type="radio" id="yulaf" name="karbonhidrat" value="Yulaf" required>
+    <label for="yulaf"><p class="text-white" style="margin: 0 0 0 0;">Yulaf</p></label>
+
+    <div class="check"></div>
+  </li>
+
+  <li>
+    <input type="radio" id="pirinc" name="karbonhidrat" value="Pirinç" required>
+    <label for="pirinc"><p class="text-white" style="margin: 0 0 0 0;">Pirinç</p></label>
+
+    <div class="check"><div class="inside"></div></div>
+  </li>
+
+  <li>
+    <input type="radio" id="makarna" name="karbonhidrat" value="Makarna" required>
+    <label for="makarna"><p class="text-white" style="margin: 0 0 0 0;">Makarna</p></label>
+
+    <div class="check"><div class="inside"></div></div>
+  </li>
+
+  <li>
+    <input type="radio" id="ekmek" name="karbonhidrat" value="Ekmek" required>
+    <label for="ekmek"><p class="text-white" style="margin: 0 0 0 0;">Ekmek</p></label>
+
+    <div class="check"><div class="inside"></div></div>
+  </li>
+
+  <li>
+    <input type="radio" id="bulgur" name="karbonhidrat" value="Bulgur" required>
+    <label for="bulgur"><p class="text-white" style="margin: 0 0 0 0;">Bulgur</p></label>
+
+    <div class="check"><div class="inside"></div></div>
+  </li>
+</ul>
+  <button  type="submit" style="background-color: red; color: white; width: 100px; height: 50px; text-align: center;" class="next">İLERİ</button>
+
+
+    </div>
+    </div>
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5af3974b3f.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
